@@ -71,8 +71,13 @@ class BlogController extends Controller
 	{
 		$validation = $request->validate([
  			"title" => 'required|min:5|',
- 			"description" => 'required|min:3'
+ 			"description" => 'required|min:3',
+ 			"gambar" => "mimes:jpeg,png,jpg|"
 		]);
+
+		// upload file
+		$request->file('gambar')->store('file');
+		dd('ok');
 		$blog = new Blog;
 		$blog->create([
 			'title' => $request->title,
