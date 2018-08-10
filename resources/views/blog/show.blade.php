@@ -5,11 +5,11 @@
 	<h3>{{ $blogs->title }}</h3>
 
 	<hr>
-
+	<img src="{{ asset('storage/blog/'.$blogs->gambar) }}" alt="">
 	<p>
 		{{ $blogs->description }}
 	</p>
-	
+
 @endsection
 {{-- 	@foreach ($users as $user)
 		

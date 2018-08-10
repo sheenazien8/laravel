@@ -72,16 +72,17 @@ class BlogController extends Controller
 		$validation = $request->validate([
  			"title" => 'required|min:5|',
  			"description" => 'required|min:3',
- 			"gambar" => "mimes:jpeg,png,jpg|"
+ 			"gambar" => "mimes:jpeg,png,jpg"
 		]);
 
 		// upload file
-		$request->file('gambar')->store('file');
-		dd('ok');
+		$fileName = time().".png";
+		$request->file('gambar')->storeAs('public/blog', $fileName);
 		$blog = new Blog;
 		$blog->create([
 			'title' => $request->title,
-			'description' => $request->description
+			'description' => $request->description,
+			'gambar' => $fileName
 		]);
 
 		// mengirim email

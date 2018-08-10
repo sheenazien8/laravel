@@ -14,7 +14,7 @@ class Blog extends Model
 	// public $timestamps = false;
 
 	// whitelist
-	protected $fillable = ['title','description'];
+	protected $fillable = ['title','description','gambar'];
 
 	// blacklist
 	// protected $guarded = ['title','description'];
