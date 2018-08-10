@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Blog;
-
+use App\Mail\BlogPosted;
 
 class BlogController extends Controller
 {
@@ -72,10 +73,14 @@ class BlogController extends Controller
  			"title" => 'required|min:5|',
  			"description" => 'required|min:3'
 		]);
-		Blog::create([
+		$blog = new Blog;
+		$blog->create([
 			'title' => $request->title,
 			'description' => $request->description
 		]);
+
+		// mengirim email
+		Mail::to("sheena@email.com")->send(new BlogPosted($blog));
 		return redirect('/blog');
 	}
 
