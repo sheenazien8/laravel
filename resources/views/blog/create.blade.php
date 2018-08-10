@@ -1,16 +1,18 @@
 @extends('layouts.master')
 
 @section('content')
-	@if (count($errors) > 0)
-		@foreach ($errors->all() as $error)
-			<li>{{ $error }}</li>
-		@endforeach
-	@endif
+	
 	<form action="/blog" method="POST">
 		@csrf
-		<input type="text" name="title">
+		<input type="text" name="title" value="{{ old('title') }}">
+		@if ($errors->has('title'))
+			<p>{{ $errors->first('title') }}</p>
+		@endif
 		<br>
-		<input type="text" name="description">
+		<input type="text" name="description" value="{{ old('title') }}">
+		@if ($errors->has('description'))
+			<p>{{ $errors->first('description') }}</p>
+		@endif
 		<br>
 		<input type="submit" name="submit" value="store">
 	</form>
