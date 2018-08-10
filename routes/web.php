@@ -15,14 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/blog', 'BlogController@index');
+Route::group(['prefix' => 'blog'],function()
+{
+	Route::match(['get', 'post'], '/testing', 'BlogController@testing')->name('test');
 
-Route::get('/blog/create', 'BlogController@create');
-Route::post('/blog','BlogController@store');
 
-Route::get('/blog/{id}', 'BlogController@show');
+	Route::get('/', 'BlogController@index');
 
-Route::get('/blog/{id}/edit', 'BlogController@edit');
-Route::put('/blog/{id}', 'BlogController@update');
+	Route::get('/create', 'BlogController@create');
+	Route::post('','BlogController@store');
 
-Route::delete('/blog/{id}', 'BlogController@destroy');
+	Route::get('/{id}', 'BlogController@show');
+
+	Route::get('/{id}/edit', 'BlogController@edit');
+	Route::put('/{id}', 'BlogController@update');
+
+	Route::delete('/{id}', 'BlogController@destroy');	
+});
+

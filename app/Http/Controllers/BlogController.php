@@ -82,6 +82,7 @@ class BlogController extends Controller
 		// mengirim email
 		Mail::to("sheena@email.com")->send(new BlogPosted($blog));
 		return redirect('/blog');
+		// return redirect()->route('test');
 	}
 
 	public function edit($id)
@@ -106,5 +107,14 @@ class BlogController extends Controller
 		$blogs->delete();
 
 		return redirect('/blog');
+	}
+
+	public function testing(Request $request)
+	{
+		if($request->isMethod("GET")){
+			dd('ini adalah GET');
+		}else {
+			dd('ini adalah POST');
+		}
 	}
 }

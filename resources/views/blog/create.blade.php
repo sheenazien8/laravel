@@ -2,7 +2,7 @@
 
 @section('content')
 	
-	<form action="/blog" method="POST">
+	<form action="/blog/testing" method="POST">
 		@csrf
 		<input type="text" name="title" value="{{ old('title') }}">
 		@if ($errors->has('title'))
