@@ -11,5 +11,6 @@
 			</form>
 		</li>
 	@endforeach
+	{{ $blogs->links() }}
 	
 @endsection

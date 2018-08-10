@@ -45,7 +45,7 @@ class BlogController extends Controller
 		// $blogs = Blog::find(3);
 		// $blogs->delete();
 
-		$blogs = Blog::all();
+		$blogs = Blog::paginate(10);
 		return view('blog.index', ['blogs' => $blogs]);
 	}
 
@@ -82,7 +82,6 @@ class BlogController extends Controller
 	public function edit($id)
 	{
 		$blogs = Blog::find($id);
-
 		return view('blog.edit', ['blogs' => $blogs]);
 	}
 
