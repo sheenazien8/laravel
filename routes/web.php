@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('users', 'UserController');
+
 Route::group(['prefix' => 'blog'],function()
 {
 	Route::match(['get', 'post'], '/testing', 'BlogController@testing')->name('test');
