@@ -11,6 +11,7 @@
 			</form>
 		</li>
 	@endforeach
-	{{ $blogs->links() }}
+	{{-- menambahkan input untuk kategori --}}
+	{{ $blogs->appends(Request::input())->render() }}
 	
 @endsection
