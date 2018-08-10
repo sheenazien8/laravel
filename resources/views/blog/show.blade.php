@@ -2,11 +2,14 @@
 
 @section('content')
 	<h1>Selamat Datang Di blog</h1>
-	<h3>{{ $blog }}</h3>
-	@foreach ($users as $user)
-		<p>{{ $user->username." ". $user->password }}</p>
-	@endforeach
-	<p>Saya Sheena Belajar basic laravel</p>
+	<h3>{{ $blogs->title }}</h3>
+
+	<hr>
+
+	<p>
+		{{ $blogs->description }}
+	</p>
+	
 @endsection
 {{-- 	@foreach ($users as $user)
 		
